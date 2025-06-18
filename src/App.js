@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Register from './Register';
+import Login from './Login';
+import './styles.css';
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="toggle-buttons">
+        <button onClick={() => setShowLogin(false)} className={!showLogin ? 'active' : ''}>
+          Register
+        </button>
+        <button onClick={() => setShowLogin(true)} className={showLogin ? 'active' : ''}>
+          Login
+        </button>
+      </div>
+      {showLogin ? <Login /> : <Register />}
     </div>
   );
 }
